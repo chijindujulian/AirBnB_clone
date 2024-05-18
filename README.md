@@ -30,5 +30,5 @@ Destroying an object
 ---
 clone the project  repo
 ```
-git clone https://github.com/adiozdaniel/AirBnB_clone.git
+git clone https://github.com/chijindujulian/AirBnB_clone.git
 ```
