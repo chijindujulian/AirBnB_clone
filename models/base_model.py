@@ -16,6 +16,8 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) != 0:
+            """change format for updated_at & created_at
+            """
             for i, j in kwargs.items():
                 if i == "created_at" or i == "updated_at":
                     kwargs[i] = datetime.strptime(j, "%Y-%m-%dT%H:%M:%S.%f")
