@@ -46,9 +46,9 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as file:
                 objdict = json.loads(file.read())
-                for o, m in objdict.values():
-                    class_name = m['__class__']
+                for o in objdict.values():
+                    class_name = o['__class__']
                     del o["__class__"]
-                    self.new(eval(cls_name)(**o))
+                    self.new(eval(class_name)(**o))
         except FileNotFoundError:
             return
