@@ -23,12 +23,15 @@ class BaseModel:
                     kwargs[i] = datetime.strptime(j, "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     kwargs[i] = j
+        else:
+            models.storage.new(self)
 
     def save(self):
         """
             to update time of the model
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
