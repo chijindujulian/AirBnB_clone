@@ -12,9 +12,7 @@ from console import HBNB
 from io import StringIO
 
 class TestHBNB_help(unittest.TestCase):
-    """Unittest tessting for help of the HBNB interpreter
-    """
-    
+    """Unittest testing for help of the HBNB interpreter"""
     def test_help_EOF(self):
         h = "EOF signal to exit the program."
         with patch("sys.stdout", new=StringIO()) as output:
