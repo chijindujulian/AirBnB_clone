@@ -2,6 +2,8 @@
 """Custom Command Console
 """
 import cmd
+import re
+from shlex import split
 from models import storage
 from models.base_model import BaseModel
 
@@ -30,6 +32,10 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
+    __classes = {
+        "BaseModel",
+        "User"
+    }
 
     def do_quit(self, arg):
         """
@@ -91,6 +97,7 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of all instances based or not on the class name.
         """
         output_arg = parse(arg)
+
         if len(output_arg) > 0 and output_arg[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
@@ -138,15 +145,15 @@ class HBNBCommand(cmd.Cmd):
                 obj.__dict__[output_arg[2]] = result(output_arg[3])
             else:
                 obj.__dict__[output_arg[2]] = output_arg[3]
-        elif type(eval(argl[2])) == dict:
-            obj = objdict["{}.{}".format(output_arg[0], output_arg[1])]
-            for i, j in eval(output_arg[2]).items():
-                if (i in obj.__class__.__dict__.keys() and
-                        type(obj.__class__.__dict__[i]) in {str, int, float}):
-                    result = type(obj.__class__.__dict__[i])
-                    obj.__dict__[i] = result(j)
+        elif type(eval(output_arg[2])) == dict:
+            obj = objdict["{}.{}".format(argl[0], argl[1])]
+            for k, v in eval(output_arg[2]).items():
+                if (k in obj.__class__.__dict__.keys() and
+                        type(obj.__class__.__dict__[k]) in {str, int, float}):
+                    result = type(obj.__class__.__dict__[k])
+                    obj.__dict__[k] =result(v)
                 else:
-                    obj.__dict__[i] = j
+                    obj.__dict__[k] = v
         storage.save()
 
     def do_EOF(self, arg):
