@@ -1,0 +1,31 @@
+.filters {
+	color: #fff;
+	height: 70px;
+	border: #ddd solid 1px;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.filters button {
+	font-size: 18px;
+	background-color: #ff5a5f;
+	color: #fff;
+	height: 48px;
+	width: 20%;
+	border: none;
+	border-radius: 4px;
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+}
+
+.filters button:hover {
+	opacity: 90%;
+}
+
+/*
+
+change opacity to 90% when the mouse is on the button
+*/

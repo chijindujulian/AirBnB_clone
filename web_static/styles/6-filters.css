@@ -1,0 +1,116 @@
+.filters {
+	color: #fff;
+	height: 70px;
+	border: #ddd solid 1px;
+	border-radius: 4px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+}
+
+.filters button {
+	font-size: 18px;
+	background-color: #ff5a5f;
+	color: #fff;
+	height: 48px;
+	width: 20%;
+	border: none;
+	border-radius: 4px;
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+}
+
+.filters button:hover {
+	opacity: 90%;
+}
+
+.filters .locations,
+.filters .amenities {
+	width: 25%;
+	height: 100%;
+	color: #aaa;
+	position: absolute;
+	cursor: pointer;
+}
+
+.filters .locations {
+	left: 5%;
+}
+
+/* Border after the first element */
+.filters .locations::after {
+	content: "";
+	height: 80%;
+	position: absolute;
+	border-right: #ddd solid 1px;
+	top: 0.6rem;
+	right: 10%;
+}
+
+.filters .amenities {
+	left: 35%;
+}
+
+.filters .locations h3,
+.filters .amenities h3 {
+	font-weight: 600;
+}
+
+.filters .locations h4,
+.filters .amenities h4 {
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: -0.5rem;
+}
+
+/* popover */
+.locations > ul,
+.amenities > ul {
+	opacity: 1;
+	visibility: hidden;
+	position: absolute;
+	list-style: none;
+	border-radius: 4px;
+	left: -350px;
+	transform: translate(-30%, -10%);
+	background-color: #fafafa;
+	padding: 1rem 1.8rem;
+	box-shadow: 0 2.5px 6px 2px rgba(0, 0, 0, 0.26);
+	width: 80%;
+}
+
+.locations > ul {
+	transform: translate(-20%, -10%);
+}
+
+.locations > ul:before,
+.amenities > ul:before {
+	position: absolute;
+	z-index: -1;
+	content: "";
+	right: calc(50% - 10px);
+	top: -8px;
+	border: #ddd solid 1px;
+	border-width: 0 10px 10px 10px;
+	border-color: transparent transparent #bfbfbf transparent;
+	transition-duration: 0.3s;
+	transition-property: transform;
+}
+
+.filters .amenities:hover .popover {
+	z-index: 10;
+	opacity: 1;
+	visibility: visible;
+	transform: translate(105%, 0);
+	transition: all 0.5s cubic-bezier(0.02, -0.02, 0.2, 0.65);
+}
+
+.filters .locations:hover .popover {
+	z-index: 10;
+	opacity: 1;
+	visibility: visible;
+	transform: translate(115%, 0);
+	transition: all 0.5s cubic-bezier(0.02, -0.02, 0.2, 0.65);
+
